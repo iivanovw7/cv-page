@@ -1,7 +1,7 @@
 ---
 import type { Frontmatter } from '@/shared/types';
 
-import { BlogPost } from '@/shared/components';
+import { BlogPost, Page } from '@/shared/components';
 import Base from '@/shared/templates/Base.astro';
 import { APP_CONFIG } from '@/shared/config';
 
@@ -15,7 +15,9 @@ const title = `${content.title} - ${APP_CONFIG.site_name}`;
 ---
 
 <Base head={{ title, description: content.description }}>
-    <BlogPost frontmatter={content}>
-        <slot></slot>
-    </BlogPost>
+    <Page>
+        <BlogPost frontmatter={content}>
+            <slot></slot>
+        </BlogPost>
+    </Page>
 </Base>

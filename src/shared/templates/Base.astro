@@ -1,4 +1,5 @@
 ---
+import { Page } from '@/shared/components';
 import { Footer } from '@/widgets/Footer';
 import { Navbar } from '@/widgets/Navbar';
 import { APP_CONFIG } from '@/shared/config';
@@ -27,7 +28,9 @@ const {
     </head>
     <body class='bg-slate-900 text-gray-100 h-screen'>
         <Navbar />
-        <slot></slot>
+        <Page>
+            <slot></slot>
+        </Page>
         <Footer />
     </body>
 </html>

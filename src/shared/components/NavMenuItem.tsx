@@ -7,7 +7,7 @@ type NavMenuItemProps = {
 };
 
 export const NavMenuItem = (props: NavMenuItemProps): ReactElement => (
-    <li className="hover:text-white">
+    <li className="text-gray-300 hover:text-white">
         <a href={props.href}>
             {props.children}
         </a>
