@@ -1,0 +1,16 @@
+---
+
+import { Content } from '@/widgets/Content';
+import { Hero } from '@/widgets/Hero';
+import Base from '@/shared/templates/Base.astro';
+import { APP_CONFIG } from '@/shared/config';
+
+const { title } = APP_CONFIG;
+const { description } = APP_CONFIG;
+
+---
+
+<Base head={{ title, description }}>
+    <Hero />
+    <Content />
+</Base>

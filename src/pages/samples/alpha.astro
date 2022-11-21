@@ -1,0 +1,10 @@
+---
+
+import { Alpha } from '@/features/samples/Alpha';
+import Base from '@/shared/templates/Base.astro';
+
+---
+
+<Base head={{ title: 'Energy reports', description: 'Alpha energy reports viewer' }}>
+    <Alpha client:load />
+</Base>

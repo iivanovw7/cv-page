@@ -1,0 +1,51 @@
+---
+
+import {
+    BlogGallery,
+    NewerOlderPagination,
+    PaginationHeader,
+    Section,
+} from '@/shared/components';
+
+import Base from '@/shared/templates/Base.astro';
+import { APP_CONFIG } from '@/shared/config';
+import { sortByDate } from '@/shared/utils';
+import { FrontmatterPage, Frontmatter } from '@/shared/types';
+
+type GetStaticPaths = {
+    paginate: any;
+};
+
+export async function getStaticPaths({ paginate }: GetStaticPaths) {
+    const allPosts = await Astro.glob<Frontmatter>('./*.mdx');
+    const sortedPosts = sortByDate(allPosts);
+
+    return paginate(sortedPosts, { pageSize: 6 });
+}
+
+type Props = {
+    page: FrontmatterPage;
+}
+
+const { page } = Astro.props as Props;
+const titleSuffix = ` - ${APP_CONFIG.site_name}`;
+const titleBase = `Blog page ${page.currentPage}`;
+const title = titleBase + titleSuffix;
+const description = 'Pagination example built with Astro styled with Tailwind CSS.';
+
+---
+
+<Base head={{ title, description }}>
+    <Section>
+        <PaginationHeader
+            title='Posts'
+            description='Some personal notes.'
+        />
+    </Section>
+    <Section>
+        <BlogGallery postList={page.data} />
+    </Section>
+    <Section>
+        <NewerOlderPagination page={page} />
+    </Section>
+</Base>
