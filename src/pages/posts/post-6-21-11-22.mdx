@@ -1,0 +1,42 @@
+---
+
+layout: '@/shared/templates/BasePost.astro'
+title: Install Dnscrypt on Ubuntu 18.04.
+description: Find and kill application listening to certain PORT.
+pubDate: 2022-11-21T00:00:00Z
+tags: dns,linux,ubuntu
+
+---
+
+import { Link } from '../../shared/components/Link';
+
+import Code from '../../shared/components/posts/Code.astro';
+import H3 from '../../shared/components/posts/H3.astro';
+import H4 from '../../shared/components/posts/H4.astro';
+import H6 from '../../shared/components/posts/H6.astro';
+import Pre from '../../shared/components/posts/Pre.astro';
+
+export const components = { code: Code, h3: H3, h4: H4, h6: H6, pre: Pre };
+
+Check DNS leak <Link href="https://dnsleaktest.com" text="Here" />
+If there are any problems (<Link href="https://github.com/dnscrypt" text="solution" />):
+<br />
+
+Purge:
+```bash
+    sudo apt purge dnscrypt-proxy
+```
+<br />
+
+Install:
+```bash
+    sudo apt update
+    sudo apt install dnscrypt-proxy
+```
+<br />
+
+Now you'll need to change your DNS server to 127.0.2.1. <br />
+Restart  network services:
+```bash
+    sudo systemctl restart NetworkManager
+```

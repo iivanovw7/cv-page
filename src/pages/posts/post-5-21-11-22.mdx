@@ -1,0 +1,38 @@
+---
+
+layout: '@/shared/templates/BasePost.astro'
+title: Mac/Linux fixing "address already in use" error.
+description: Find and kill application listening to certain PORT.
+pubDate: 2022-11-21T00:00:00Z
+tags: linux,mac
+
+---
+
+import { Link } from '../../shared/components/Link';
+
+import Code from '../../shared/components/posts/Code.astro';
+import H3 from '../../shared/components/posts/H3.astro';
+import H4 from '../../shared/components/posts/H4.astro';
+import H6 from '../../shared/components/posts/H6.astro';
+import Pre from '../../shared/components/posts/Pre.astro';
+
+export const components = { code: Code, h3: H3, h4: H4, h6: H6, pre: Pre };
+
+`First` is to find out the process ID.
+```bash
+    sudo lsof -n -i:<port number>;
+```
+<br />
+
+Same for Mac:
+```bash
+    lsof -i tcp:<port no>;
+```
+<br />
+
+`Second` is to kill application by ID.
+```bash
+    kill -9 <PID>;
+```
+<br />
+
