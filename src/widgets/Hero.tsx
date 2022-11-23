@@ -29,9 +29,9 @@ export const Hero = (): ReactElement => (
                     <br />
                 </div>
             }
-            avatar={<img className="h-72 w-96" src="/assets/images/hero.png" alt="Avatar image" loading="lazy" />}
+            avatar={<img className="h-72 w-96 justify-center md:justify-start" src="/assets/images/hero.png" alt="Avatar image" loading="lazy" />}
             socialButtons={
-                <>
+                <div className="flex flex-row w-full justify-center md:justify-start gap-1">
                     <a className="mr-1" href="https://t.me/iivanovw7">
                         <HeroSocial src="/assets/images/telegram-icon.png" alt="Telegram icon" />
                     </a>
@@ -44,13 +44,13 @@ export const Hero = (): ReactElement => (
                     <a className="mr-1" href="https://www.linkedin.com/in/iivanovw7">
                         <HeroSocial src="/assets/images/linkedin-icon.png" alt="Linkedin icon" />
                     </a>
-                    <a href="https://github.com/iivanovw7">
+                    <a className="mr-1" href="https://github.com/iivanovw7">
                         <HeroSocial src="/assets/images/github-icon.png" alt="GitHub icon" />
                     </a>
                     <a href="mailto:iivanovw7@gmail.com">
                         <HeroSocial src="/assets/images/email-icon.png" alt="Email icon" />
                     </a>
-                </>
+                </div>
             }
         />
     </Section>
