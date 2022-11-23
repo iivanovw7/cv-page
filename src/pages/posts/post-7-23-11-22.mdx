@@ -1,0 +1,49 @@
+---
+
+layout: '@/shared/templates/BasePost.astro'
+title: Optimize images in bulk.
+description: Recoursive image files optimization with optipng and jpegoptim
+pubDate: 2022-11-23T00:00:00Z
+tags: png,gif,optipng
+
+---
+
+import { Link } from '../../shared/components/Link';
+
+import Code from '../../shared/components/posts/Code.astro';
+import H3 from '../../shared/components/posts/H3.astro';
+import H4 from '../../shared/components/posts/H4.astro';
+import H6 from '../../shared/components/posts/H6.astro';
+import Pre from '../../shared/components/posts/Pre.astro';
+
+export const components = { code: Code, h3: H3, h4: H4, h6: H6, pre: Pre };
+
+Install optipng, jpegoptim and gifsicle
+```bash
+    sudo apt-get install optipng
+    sudo apt-get install jpegoptim
+    sudo apt-get install gifsicle
+
+    # For MAC OS
+    brew install jpegoptim
+    brew install optipng
+    brew install gifsicle
+```
+<br />
+
+To wildcard all images recursively in the current directory and sub directories:
+```bash
+    find . -iname "*.png" -exec optipng -o7 {} \;
+    find . -iname "*.jpg" -exec jpegoptim -m80 -o -p {} \;
+    find . -iname "*.gif" -exec gifsicle --batch -V -O2 {} \;
+```
+<br />
+
+To optimize sigle file:
+```bash
+    gifsicle --batch -V -O2 <image-name>.gif
+    jpegoptim -m70 <img-name>
+    optipng <img-name>.png
+```
+<br />
+

@@ -24,7 +24,6 @@ export const RecentPosts = (props: IRecentPostsProps): ReactElement => {
                         <span>Recent </span>
                         <GradientText>Posts</GradientText>
                     </div>
-
                     <div className="text-sm">
                         <a href="/posts">View all Posts →</a>
                     </div>

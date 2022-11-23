@@ -1,0 +1,72 @@
+---
+
+layout: '@/shared/templates/BasePost.astro'
+title: Asynchronous functions in js
+description: Different ways of how to define and use async functions
+pubDate: 2022-11-23T00:00:00Z
+tags: js,async
+
+---
+
+import { Link } from '../../shared/components/Link';
+
+import Code from '../../shared/components/posts/Code.astro';
+import H3 from '../../shared/components/posts/H3.astro';
+import H4 from '../../shared/components/posts/H4.astro';
+import H6 from '../../shared/components/posts/H6.astro';
+import Pre from '../../shared/components/posts/Pre.astro';
+
+export const components = { code: Code, h3: H3, h4: H4, h6: H6, pre: Pre };
+
+Simplest and native js way is to use `setTimeout` method:
+```javascript
+    setTimeout(function() {
+        console.log('Async function');
+    });
+
+    console.log('Sync function 1');
+
+    for (let i = 0; i < 10000; ++i) {
+        sampleFunction();
+    }
+
+    console.log('Test 2');
+
+    function sampleFunction() {
+        return 1 + 1;
+    }
+```
+Async function will be executed only after the main thread is no longer busy dealing with Sync functions
+<br />
+
+Second native js option is to use `setInterval` method:
+```javascript
+    let counter = 0;
+
+    let timer = setInterval(function() {
+        console.log('Async function');
+
+        counter += 1;
+
+        if (counter >= 5) {
+            clearInterval(timer);
+        }
+    }, 1000);
+
+    console.log('Sync function');
+```
+<br />
+
+The output should look like::
+```javascript
+   Sync function
+   Async function
+   Async function
+   Async function
+   Async function
+   Async function
+   Async function
+```
+<br />
+
+
