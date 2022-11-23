@@ -1,0 +1,62 @@
+---
+
+layout: '@/shared/templates/BasePost.astro'
+title: PM2 configuration for running "npm start" script.
+description: Few options of running react application with pm2
+pubDate: 2022-11-23T00:00:00Z
+tags: js,node,react,pm2
+
+---
+
+import { Link } from '../../shared/components/Link';
+
+import Code from '../../shared/components/posts/Code.astro';
+import H3 from '../../shared/components/posts/H3.astro';
+import H4 from '../../shared/components/posts/H4.astro';
+import H6 from '../../shared/components/posts/H6.astro';
+import Pre from '../../shared/components/posts/Pre.astro';
+
+export const components = { code: Code, h3: H3, h4: H4, h6: H6, pre: Pre };
+
+#### 1. Running via configuration file
+
+File `application.config.json` should be kept in root application directory:
+```bash
+    {
+        "apps": [{
+            "name": "my-app",
+            "script": "npm",
+            "args" : "start"
+        }]
+    }
+```
+<br />
+
+Application should be executed via command:
+```bash
+    pm2 start application.config.json
+```
+<br />
+
+#### 2. Execute application with command line:
+
+```bash
+    pm2 start npm --no-automation --name {application name} -- run {script name}
+```
+<br />
+
+#### 3. Create shell script for running application:
+
+```bash
+    #!/bin/bash
+    cd /path/to/project
+    npm start
+```
+<br />
+
+Then run sh script via command line:
+```bash
+    pm2 start start.sh --name { application name }
+```
+<br />
+
